@@ -20,7 +20,9 @@ jobs:
       - run: ls
       - run: cd actions2
       - run: ls
+        workingDirectory: "./actions2"
       - run: git add .
+
       - run: git commit -m "Auto commit"
       - run: git branch --set-upstream main origin/main
       - run: git push

@@ -18,15 +18,15 @@ jobs:
       - run: git clone https://.:${{ secrets.PAT }}@github.com/m6keller/actions2.git actions2
       - run: node ./utility/copy.js
       - run: |
-        cd actions2
-        ls
-        git add .
-        git commit -m "Auto commit"
-        git branch --set-upstream main origin/main
-        git push
+          cd actions2
+          ls
+          git add .
+          git commit -m "Auto commit"
+          git branch --set-upstream main origin/main
+          git push
 
 # commit:
-#   runs-on: macos-latest      
+#   runs-on: macos-latest
 #   steps:
 #     - uses: actions/checkout@v2 # checkout brings source code to working directory
 #     - uses: actions/setup-node@v2.5.1

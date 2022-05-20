@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "copy": "node ./utility/copy.js",
+    "copyDir": "node ./utility/copyDirectory.js"
   },
   "repository": {
     "type": "git",

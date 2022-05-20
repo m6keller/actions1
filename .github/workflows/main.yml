@@ -15,21 +15,51 @@ jobs:
       - run: npm i
       - run: npm run build
       - run: node ./dist/index.js
-      - run: git clone https://.:${{ secrets.PAT }}@github.com/m6keller/actions2.git actions2
+      - run: git clone https://.:${{ secrets.PAT }}@github.com/Reya-Health/reya-dev.git reya-dev
       - run: node ./utility/copy.js
-      - run: |
-          cd actions2
-          ls
-          git add .
-          git commit -m "Auto commit"
-          git push
+      # - run: |
+      #     cd actions2
+      #     ls
+      #     git add .
+      #     git commit -m "Auto commit"
+      #     git push
+      - cd: reya-dev
+####
 
+# name: Flutter Build
+
+# on:
+#   push:
+#     branches: [main]
+
+# jobs:
+#   build:
+#     runs-on: macos-latest
+#     steps:
+#       - uses: actions/checkout@v2 # checkout brings source code to working directory
+#       - uses: subosito/flutter-action@v1
+#         with:
+#         channel: 'dev'
+#       - run: flutter config --enable-web ### this and next three are specific to flutter
+#       - run: flutter pub get
+#       - run: flutter build web --release
+#       - run: git clone https://.:${{ secrets.PAT }}@github.com/Reya-Health/reya-dev.git reya-dev
+#       - run: node ./utility/copy.js # Make sure this is in atil's correct directory
+#       - run: |
+#           cd reya-dev
+#           ls
+#           git add .
+#           git commit -m "Auto commit"
+#           git push
+
+####
 # commit:
 #   runs-on: macos-latest
 #   steps:
 #     - uses: actions/checkout@v2 # checkout brings source code to working directory
 #     - uses: actions/setup-node@v2.5.1
 #       with: node-version: 16.x
+#
 #     - task:
 #       inputs:
 #         workingDiretory: ./actions2

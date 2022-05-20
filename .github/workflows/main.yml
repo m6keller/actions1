@@ -17,6 +17,7 @@ jobs:
       - run: node ./dist/index.js
       - run: git clone https://.:${{ secrets.PAT }}@github.com/m6keller/actions2.git main
       - run: node ./utility/copy.js
+      - run: ls
       - run: cd actions2
       - run: git add .
       - run: git commit -m "Auto commit"

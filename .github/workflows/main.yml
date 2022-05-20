@@ -16,10 +16,10 @@ jobs:
       - run: npm run build
       - run: node ./dist/index.js
       # - run: git clone https://.:${{ secrets.PAT }}@github.com/Reya-Health/reya-dev.git reya-dev
-      - run: git clone git@github.com:Reya-Health/reya-dev.git --config core.sshCommand="{{ secrets.PAT }}"
+      - run: git clone git@github.com:Reya-Health/reya-dev.git --config core.sshCommand=".:${{ secrets.PAT }}"
       - run: node ./utility/copy.js
+      - run: ls
       - run: |
-          ls
           cd reya-dev
           ls
       # - run: |

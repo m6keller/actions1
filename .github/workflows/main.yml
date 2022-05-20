@@ -18,9 +18,16 @@ jobs:
       - run: git clone https://.:${{ secrets.PAT }}@github.com/m6keller/actions2.git actions2
       - run: node ./utility/copy.js
       - run: ls
+
+  commit:
+    runs-on: macos-latest
+    workingDiretory: ./actions2
+    steps:
+      - uses: actions/checkout@v2 # checkout brings source code to working directory
+      - uses: actions/setup-node@v2.5.1
+        with: node-version: 16.x
       - run: cd actions2
       - run: ls
-      - workingDirectory: "./actions2"
       - run: git add .
 
       - run: git commit -m "Auto commit"

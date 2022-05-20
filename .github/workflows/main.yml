@@ -23,7 +23,10 @@ jobs:
       #     git add .
       #     git commit -m "Auto commit"
       #     git push
-      - cd: reya-dev
+      - run: |
+        ls
+        cd reya-dev
+        ls
 ####
 
 # name: Flutter Build

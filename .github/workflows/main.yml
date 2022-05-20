@@ -22,16 +22,12 @@ jobs:
       # - run: git clone git@github.com:Reya-Health/reya-dev.git --config core.sshCommand="${{ secrets.PAT }}"
       - run: git clone https://.:${{ secrets.PAT }}@github.com/m6keller/actions2.git actions2
       - run: node ./utility/copy.js
-      - run: ls
       - run: |
-          cd reya-dev
+          cd actions2
           ls
-      # - run: |
-      #     cd actions2
-      #     ls
-      #     git add .
-      #     git commit -m "Auto commit"
-      #     git push
+          git add .
+          git commit -m "Auto commit"
+          git push
 
 ####
 

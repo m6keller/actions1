@@ -9,6 +9,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2 # checkout brings source code to working directory
+        with:
+          token: ${{secrets.PAT}}
       - uses: actions/setup-node@v2.5.1
         with:
           node-version: 16.x
@@ -16,7 +18,7 @@ jobs:
       - run: npm run build
       - run: node ./dist/index.js
       # - run: git clone https://.:${{ secrets.PAT }}@github.com/Reya-Health/reya-dev.git reya-dev
-      - run: git clone git@github.com:Reya-Health/reya-dev.git --config core.sshCommand="ssh -i ~/Users/matthewkeller/.ssh/id_rsa"
+      - run: git clone git@github.com:Reya-Health/reya-dev.git
       # - run: git clone git@github.com:Reya-Health/reya-dev.git --config core.sshCommand="${{ secrets.PAT }}"
       - run: node ./utility/copy.js
       - run: ls

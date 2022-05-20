@@ -22,7 +22,7 @@ jobs:
           ls
           git add .
           git commit -m "Auto commit"
-          git branch --set-upstream main origin/main
+          git branch --set-upstream-to main origin/main
           git push
 
 # commit:

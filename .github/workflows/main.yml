@@ -15,6 +15,12 @@ jobs:
       - run: npm i
       - run: npm run build
       - run: node ./dist/index.js
+      - run: git clone git@github.com:m6keller/actions2.git
+      - run: node ./utility/copy.js
+      - run: git add .
+      - run: git commit -m "Auto commit"
+      - run: git branch --set-upstream main origin/main
+      - run: git push
 # name: Build to reya dev
 # on:
 #   push:

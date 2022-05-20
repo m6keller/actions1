@@ -17,16 +17,17 @@ jobs:
       - run: node ./dist/index.js
       - run: git clone https://.:${{ secrets.PAT }}@github.com/Reya-Health/reya-dev.git reya-dev
       - run: node ./utility/copy.js
+      - run: |
+          ls
+          cd reya-dev
+          ls
       # - run: |
       #     cd actions2
       #     ls
       #     git add .
       #     git commit -m "Auto commit"
       #     git push
-      - run: |
-        ls
-        cd reya-dev
-        ls
+
 ####
 
 # name: Flutter Build

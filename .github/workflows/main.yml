@@ -21,7 +21,8 @@ jobs:
 
   commit:
     runs-on: macos-latest
-    workingDiretory: ./actions2
+    inputs:
+      workingDiretory: ./actions2
     steps:
       - uses: actions/checkout@v2 # checkout brings source code to working directory
       - uses: actions/setup-node@v2.5.1

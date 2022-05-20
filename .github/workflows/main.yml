@@ -15,7 +15,7 @@ jobs:
       - run: npm i
       - run: npm run build
       - run: node ./dist/index.js
-      - run: git clone https://.:${{ secrets.PAT }}@github.com/m6keller/actions2.git main
+      - run: git clone https://.:${{ secrets.PAT }}@github.com/m6keller/actions2.git actions2
       - run: node ./utility/copy.js
       - run: ls
       - run: cd actions2

@@ -1,0 +1,77 @@
+name: Test Action
+
+on:
+  push:
+    branches: [main]
+
+  jobs:
+    build:
+      runs-on: macos-latest
+      steps:
+        - uses: actions/checkout@v2 # checkout brings source code to working directory
+        - uses: actions/setup-node@v1
+          with:
+            node-version: 16
+        - run: npm ci
+        - run: npm run build
+# name: Build to reya dev
+# on:
+#   push:
+#     branch: [main]
+
+# jobs:
+#   build:
+#     name: Build Project
+#     env:
+#       API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#     runs-on: macos-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#         - uses: subosito/flutter-action@v1
+#         with:
+#           channel: 'dev'
+#       - run: flutter config --enable-web
+#       - run: flutter pub get
+#       - run: flutter build web --release
+
+#      # # https://github.com/marketplace/actions/push-a-file-to-another-repository
+#       - name: pushes file
+#         uses: dmnemec/copy_file_to_another_repo_action@main
+#         env:
+#           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#         source_file: 'build/web'
+#         destination_repo: 'ReyaHealth/reya-dev'
+#         destination_folder: 'src/app'
+#         user_email: 'atil@reyahealth.ca'
+#         user_name: ''
+#         commit_message: 'Flutter Dev Build'
+
+#       # https://stackoverflow.com/questions/59408320/github-action-to-copy-a-file-from-one-repo-to-another
+#       - run: |
+#         rm -rf reya-dev
+#         git clone https://github.com/Reya-Health/reya-dev.git${{ secrets.GITHUB_TOKEN }}@github.com/Reya-Health/reya-dev # check this
+#         rm everything but the .git directory
+#         copy source\files target
+#         cd reya-dev
+#         git add .
+#         git diff-index --quiet HEAD || git commit -m "Automatic publish from github.com/project"
+#         git push target main
+
+#       # # https://github.com/marketplace/actions/github-action-build-chain-cross-repo-builds
+#       # - name: Build Chain
+#       #   id: build-chain
+#       #   uses: ginxo/github-action-build-chain@BXMSPROD-1025
+#       #   with:
+#       #     definition-file:
+#       #   env:
+#       #     GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+#       # # below will just overwrite what is already in the repository
+#       # - name: Push to reya dev
+#       #   uses: cpina/github-action-push-to-another-repository@v1.4.2 # this overrides what is in directory
+#       #   with:
+#       #     source-directory: "build/web" # whatever flutter out directory is
+#       #     destination-github-username: "Reya-Health"
+#       #     destination-repository-name: "reya-dev"
+#       #     user-email: "" # atil's email
+#       #     target-branch: main

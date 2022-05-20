@@ -20,20 +20,27 @@ jobs:
       - run: ls
 
   commit:
-    runs-on: macos-latest
-    inputs:
-      workingDiretory: ./actions2
+    runs-on: macos-latest      
     steps:
       - uses: actions/checkout@v2 # checkout brings source code to working directory
       - uses: actions/setup-node@v2.5.1
         with: node-version: 16.x
-      - run: cd actions2
-      - run: ls
-      - run: git add .
+      - task:
+        inputs:
+          workingDiretory: ./actions2
+          run: |
+            ls
+            git add .
+            git commit -m "Auto commit"
+            git branch --set-upstream main origin/main
+            git push
+      # - run: cd actions2
+      # - run: ls
+      # - run: git add .
 
-      - run: git commit -m "Auto commit"
-      - run: git branch --set-upstream main origin/main
-      - run: git push
+      # - run: git commit -m "Auto commit"
+      # - run: git branch --set-upstream main origin/main
+      # - run: git push
 # name: Build to reya dev
 # on:
 #   push:
